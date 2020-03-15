@@ -34,6 +34,7 @@ defmodule Commander.MixProject do
     [
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
+      {:observer_cli, "~> 1.5"},
       {:phoenix, "~> 1.4.15"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_html, "~> 2.11"},
