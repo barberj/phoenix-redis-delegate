@@ -2,7 +2,7 @@ defmodule CommanderWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "command:*", CommanderWeb.CommandChannel
+  # channel "command:*", CommanderWeb.CommandChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
