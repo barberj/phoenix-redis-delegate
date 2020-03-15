@@ -7,12 +7,20 @@
 # General application configuration
 use Mix.Config
 
+redis_node_name = System.get_env("HEROKU_DYNO_ID") || System.get_env("NODE_ID", "DEV_NODE")
+redis_url = System.get_env("REDIS_URL", "redis://127.0.0.1:6379")
+
 # Configures the endpoint
 config :commander, CommanderWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "XTAcXBFHw6dGQAGUS/OZkRUgncb07X8dYkoMQJG1ZHljQpmU7fJvRqZl0w/zTCNq",
   render_errors: [view: CommanderWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Commander.PubSub, adapter: Phoenix.PubSub.PG2],
+  pubsub: [
+    adapter: Phoenix.PubSub.Redis,
+    name: Commander.PubSub,
+    url: redis_url,
+    node_name: redis_node_name
+  ],
   live_view: [signing_salt: "mXyNLmYb"]
 
 # Configures Elixir's Logger
