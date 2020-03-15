@@ -9,9 +9,11 @@ defmodule Commander.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      CommanderWeb.Endpoint
+      CommanderWeb.Endpoint,
       # Starts a worker by calling: Commander.Worker.start_link(arg)
       # {Commander.Worker, arg},
+      Commander.Server,
+      Commander.Listener
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
