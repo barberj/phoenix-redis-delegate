@@ -19,7 +19,7 @@ defmodule Worker.Server do
 
   defp broadcast(command) do
     WorkerWeb.Endpoint.broadcast!("command:ack", "ack", %{
-      ack: command,
+      ack: command
     })
   end
 end
