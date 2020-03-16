@@ -14,7 +14,7 @@ defmodule Commander.Listener do
 
   def init(_state) do
     CommanderWeb.Endpoint.subscribe("command:delegate", [])
-    Logger.debug("Commander server b started")
+    Logger.debug("Commander listener started")
     {:ok, %{}}
   end
 end

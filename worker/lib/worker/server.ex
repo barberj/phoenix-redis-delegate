@@ -14,12 +14,12 @@ defmodule Worker.Server do
   def init(_state) do
     WorkerWeb.Endpoint.subscribe("command:delegate", [])
     Logger.debug("Worker server started")
-    {:ok, 30}
+    {:ok, %{}}
   end
 
   defp broadcast(command) do
-   WorkerWeb.Endpoint.broadcast!("command:ack", "ack", %{
-     ack: command,
-   })
+    WorkerWeb.Endpoint.broadcast!("command:ack", "ack", %{
+      ack: command,
+    })
   end
 end
