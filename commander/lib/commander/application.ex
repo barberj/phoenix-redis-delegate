@@ -12,9 +12,28 @@ defmodule Commander.Application do
       CommanderWeb.Endpoint,
       # Starts a worker by calling: Commander.Worker.start_link(arg)
       # {Commander.Worker, arg},
-      Commander.Server,
-      Commander.Listener
+      Commander.Server
     ]
+
+    children =
+      case System.get_env("A") do
+        "1" ->
+          children ++
+            [Commander.Listener]
+
+        _ ->
+          children
+      end
+
+    children =
+      case System.get_env("B") do
+        "1" ->
+          children ++
+            [Commander.ListenerB]
+
+        _ ->
+          children
+      end
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

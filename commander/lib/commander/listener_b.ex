@@ -1,9 +1,9 @@
-defmodule Commander.Listener do
+defmodule Commander.ListenerB do
   use GenServer
   require Logger
 
   def handle_info(%{event: "ping", payload: payload}, state) do
-    Logger.debug("Listener ping")
+    Logger.debug("Listener B ping")
     {:noreply, state}
   end
 
@@ -13,7 +13,7 @@ defmodule Commander.Listener do
 
   def init(_state) do
     CommanderWeb.Endpoint.subscribe("command:delegate", [])
-    Logger.debug("Commander listener started")
+    Logger.debug("Commander listener b started")
     {:ok, %{}}
   end
 end
